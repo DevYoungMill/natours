@@ -30,6 +30,9 @@ exports.getTour = catchAsync(async (req, res, next) => {
   // 2) Build template
   // 3) Render template using tour Data from 1
   res.status(200).render('tour', {
+    mapboxToken: (process.env.MAPBOX_PUBLIC_TOKEN || '').startsWith('pk.')
+      ? process.env.MAPBOX_PUBLIC_TOKEN
+      : '',
     title: `${tour.name} Tour`,
     tour,
   });

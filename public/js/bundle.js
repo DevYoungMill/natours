@@ -6614,9 +6614,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.displayMap = void 0;
 /* eslint-disable */
 
-var displayMap = exports.displayMap = function displayMap(locations) {
+var displayMap = exports.displayMap = function displayMap(locations, accessToken) {
+  if (!accessToken || !accessToken.startsWith('pk.')) {
+    console.warn('Set MAPBOX_PUBLIC_TOKEN to your own Mapbox public token to display maps.');
+    return;
+  }
   var map = new mapboxgl.Map({
-    accessToken: 'YOUR_MAPBOX_PUBLIC_TOKEN',
+    accessToken: accessToken,
     container: 'map',
     style: 'mapbox://styles/devyoungmill/cmt8sw8fq00fl01qzb1c20mfv',
     scrollZoom: false
@@ -12619,7 +12623,7 @@ var bookBtn = document.getElementById('book-tour');
 // DELEGATION
 if (mapBox) {
   var locations = JSON.parse(mapBox.dataset.locations);
-  (0, _mapbox.displayMap)(locations);
+  (0, _mapbox.displayMap)(locations, mapBox.dataset.mapboxToken);
 }
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {

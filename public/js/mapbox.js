@@ -1,9 +1,12 @@
 /* eslint-disable */
 
-export const displayMap = (locations) => {
+export const displayMap = (locations, accessToken) => {
+  if (!accessToken || !accessToken.startsWith('pk.')) {
+    console.warn('Set MAPBOX_PUBLIC_TOKEN to your own Mapbox public token to display maps.');
+    return;
+  }
   const map = new mapboxgl.Map({
-    accessToken:
-      'YOUR_MAPBOX_PUBLIC_TOKEN',
+    accessToken,
     container: 'map',
     style: 'mapbox://styles/devyoungmill/cmt8sw8fq00fl01qzb1c20mfv',
     scrollZoom: false,
