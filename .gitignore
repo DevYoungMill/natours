@@ -1,0 +1,6 @@
+node_modules/
+.cache
+clean-up
+*.env
+dev-data
+notes.txt

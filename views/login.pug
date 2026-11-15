@@ -1,0 +1,28 @@
+extends base
+
+block content
+    main.main
+        .login-form
+            h2.heading-secondary.ma-bt-lg= isSignup ? 'Create your account' : 'Log into your account'
+            form.form(class=isSignup ? 'form--signup' : 'form--login')
+                if isSignup
+                    .form__group
+                        label.form__label(for='name') Your name
+                        input#name.form__input(type='text', name='name', autocomplete='name', placeholder='Your full name', required)
+                .form__group
+                    label.form__label(for='email') Email address
+                    input#email.form__input(type='email', name='email', autocomplete='email', placeholder='you@example.com', required)
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Password
+                    input#password.form__input(type='password', name='password', autocomplete=isSignup ? 'new-password' : 'current-password', placeholder='••••••••', required, minlength='8')
+                if isSignup
+                    .form__group.ma-bt-md
+                        label.form__label(for='password-confirm') Confirm password
+                        input#password-confirm.form__input(type='password', name='passwordConfirm', autocomplete='new-password', placeholder='Repeat your password', required, minlength='8')
+                .form__group
+                    button.btn.btn--green(type='submit')= isSignup ? 'Sign up' : 'Login'
+                .form__group
+                    if isSignup
+                        a.btn-text(href='/login') Already have an account? Log in
+                    else
+                        a.btn-text(href='/signup') New to Natours? Sign up
