@@ -71,7 +71,6 @@ if (userDataForm)
     form.append('email', document.querySelector('#email').value);
     const photo = document.getElementById('photo').files[0];
     if (photo) form.append('photo', photo);
-    console.log(form);
 
     updateSettings(form, 'data');
   });

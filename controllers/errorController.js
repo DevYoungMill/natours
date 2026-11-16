@@ -74,7 +74,7 @@ const sendErrorProd = (err, req, res) => {
   }
   // b) Programming or unknown error:don't leak to client
   // 1) Log to the console
-  console.error('ERROR ♨️', err);
+  // console.error('ERROR ♨️', err);
 
   // 2) Send a generic message
   return res.status(err.statusCode).render('error', {

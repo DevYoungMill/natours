@@ -2,7 +2,7 @@
 
 export const displayMap = (locations, accessToken) => {
   if (!accessToken || !accessToken.startsWith('pk.')) {
-    console.warn('Set MAPBOX_PUBLIC_TOKEN to your own Mapbox public token to display maps.');
+    // console.warn('Set MAPBOX_PUBLIC_TOKEN to your own Mapbox public token to display maps.');
     return;
   }
   const map = new mapboxgl.Map({
